@@ -6,8 +6,9 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser"); // Parsing incoming request bodies so we can access easily
 const mongoose = require("mongoose");
 
-const ProductRoutes = require("./api/routes/product");
-const OrderRoutes = require("./api/routes/order");
+const productRoutes = require("./api/routes/product");
+const orderRoutes = require("./api/routes/order");
+const userRoutes = require("./api/routes/user");
 
 // Connect with MongoDB
 mongoose
@@ -46,8 +47,9 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle requests
-app.use("/products", ProductRoutes);
-app.use("/orders", OrderRoutes);
+app.use("/products", productRoutes);
+app.use("/orders", orderRoutes);
+app.use("/user", userRoutes);
 
 // Routes for Error Handling
 app.use((req, res, next) => {
